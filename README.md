@@ -1,6 +1,7 @@
 Multi-Interface Iperf Wrapper for Python
 ========================================
 This is a wrapper for [IPERF] (https://sourceforge.net/projects/iperf/) - a network throughput test tool - written in Python 2.7. This was developed to address a set of very specific problems to do with Mobile Network Testing using multiple mobile devices connected to the computer:
+
 1. When testing with multiple mobile devices on the same machine, and where the IP addresses for each device are allocated via DHCP, it becomes combersome to manage those IP addresses when running the IPERF commands. The SysEnvironment.py class was written using the WMI API for Windows in order to dynamically query the allocated IP addresses and interface names at run-time and allow them to be used in the Iperf commands for the test without the user having to manually run ipconfig or something else to get them.
 2. Running downlink throughput tests requires that the user is logged into the test server (somewhere on the network) in order to issue the iperf command. When testing with multiple devices this becomes un-manageable, and so this script automated this process using the Python Paramiko SSH library to log into the server and run the necessary commands.
 3. iperf default logging is just to print the output to the console, which is unhelpful to say the least. This script records all the log output from both the server and local machine iperf instances, and saves them in properly named and structured text files.
